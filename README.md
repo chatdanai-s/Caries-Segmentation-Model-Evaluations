@@ -6,7 +6,7 @@ A quantitative evaluation framework for comparing U-Net variant segmentation mod
 
 ## Role
 
-I was responsible for the evaluation pipeline only. Model training, dataset curation, clinical methodology, and the Streamlit webapp deployment were handled by other team members. My contribution covers everything in this repository: the island-counting detection metric, per-model precision/recall/F1 aggregation, and visualisation of predictions against ground truth masks.
+I was responsible for the evaluation pipeline only. Model training, dataset curation, clinical methodology, the Streamlit webapp deployment, etc. were handled by other team members. My contribution covers everything in this repository: the island-counting detection metric, per-model precision/recall/F1 aggregation, and visualisation of predictions against ground truth masks.
 
 ---
 
@@ -16,7 +16,7 @@ Segmentation models output pixel-level probability maps. Standard pixel-level me
 
 This evaluation reframes the problem at the lesion level. Each connected region of predicted pixels is treated as a single detection, and each connected region in the ground truth is a single lesion. A detection counts as a true positive only if it overlaps with a ground truth lesion by at least one pixel.
 
-![Example comparison](images/example.png)
+![Example comparison](image/example.png)
 
 ---
 
@@ -54,13 +54,13 @@ This evaluation reframes the problem at the lesion level. Each connected region 
 | EfficientNet-B5_250 | 112 | 51 | 38 | 0.687 | 0.747 | 0.716 |
 | EfficientNet-B5_350 | 119 | 41 | 31 | 0.744 | 0.793 | 0.768 |
 
-All models were evaluated against the same 50-image test set (150 ground truth lesions total). EfficientNet-B5 with 3x augmentation achieved the best F1 (0.801), while keeping precision and recall around 80%.
+All models were evaluated against the same 50-image test set (150 ground truth lesions total). EfficientNet-B5 with 3x augmentation achieved the best F1 score (0.801), while also keeping precision and recall around 80%.
 
 ---
 
 ## Note on data availability
 
-The dental X-ray images and trained model weights are omitted from this repository. The images are patient data subject to institutional data access restrictions. The model weights are part of the research contribution and will not be released in this repository. The evaluation code runs on pre-exported `.npy` prediction arrays and ground truth masks, which are also omitted for the same reason.
+The dental X-ray images and trained model weights are omitted from this repository. The images of patient data are subject to institutional data access restrictions. The model weights are part of the research contribution and will not be released in this repository. The evaluation code runs on pre-exported `.npy` prediction arrays and ground truth masks, which are also omitted for the same reason.
 
 ---
 
